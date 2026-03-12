@@ -1,9 +1,14 @@
 import { Component, signal } from '@angular/core';
+import { Nav } from './components/nav/nav';
+import { Home } from './components/home/home';
+import { Products } from './components/products/products';
+import { Cards } from './components/cards/cards';
 import { RouterOutlet } from '@angular/router';
+import { About } from './components/about/about';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [Nav , Cards , Products , About , RouterOutlet],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })

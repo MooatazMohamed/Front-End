@@ -1,0 +1,48 @@
+<section class="cards">
+    <div class="card" [style.padding]="(items[0].quantity<4) ? '40px' : '80px' "
+                    [style.backgroundColor]="(items[0].quantity<4) ? 'blue' : 'orange'"
+    >
+        <img src="" alt="image" />
+        <h3> {{items[0].name}}</h3>
+        <p> Description {{items[0].description}} </p>
+        <div class="d-flex justify-content-between">
+            <button (click)="increaseQuantity(0)">
+                +
+            </button>
+            <h4>Quantity {{items[0].quantity}}</h4>
+            <button (click)="decreaseeQuantity(0)">
+                -
+            </button>
+        </div>
+    </div>
+    
+    <div class="card">
+        <img src="" alt="image" />
+        <h3>{{items[1].name}}</h3>
+        <p> Description {{items[1].description}}</p>
+        <div class="d-flex justify-content-between">
+            <button (click)="increaseQuantity(1)">
+                +
+            </button>
+            <h4>Quantity {{items[1].quantity}}</h4>
+            <button (click)="decreaseeQuantity(1)">
+                -
+            </button>
+        </div>
+    </div>
+</section>
+
+
+<input type="text" [(ngModel)]="selectedName">
+<h1>{{selectedName}}</h1>
+
+
+<input type="color" [(ngModel)]="selectedColor">
+<h1>Color : {{selectedColor}}</h1>
+
+
+<!-- Style & class Binding -->
+
+<div [class.parent]="danger">
+    <h1>Angular 21</h1>
+</div>

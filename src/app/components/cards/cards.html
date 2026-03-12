@@ -1,0 +1,54 @@
+<div class="container mt-4">
+    <div class="row justify-content-center g-4">
+
+
+        <h5>{{selectedCatID}}</h5>
+        <select class="form-select" aria-label="Default select example" [(ngModel)]="selectedCatID">
+            <option value="0" selected>All</option>
+            @for(cat of category; track cat.id){
+            <option [value]="cat.id">{{cat.name}}</option>
+            }
+        </select>
+
+
+        <h1>Price = {{totalOrderPrice}}</h1>
+        @for(prd of product ; track prd.id){
+        <div class="col-md-3" [class.d-none]="selectedCatID!=0 && prd.catId!=selectedCatID">
+            <div class="card h-100" [ngStyle]="
+            {
+                'background-color' : prd.quantity == 0 ? 'red' 
+                : prd.quantity == 1 || prd.quantity == 2 ? 'yellow' 
+                : 'chocolate',
+
+                'color' : prd.quantity == 0 ? 'white' : 'blue'
+            }">
+                <img [src]="prd.image" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">{{prd.name}}</h5>
+                    <p class="card-text">Price : {{prd.price | currency : 'CAD'}}</p>
+                    @switch(prd.quantity){
+                    @case(0){
+                    <h5>Out of stock</h5>
+                    }
+                    @case(1){
+                    <h5>Last item</h5>
+                    }
+                    @default{
+                    <h5>{{prd.quantity}}</h5>
+                    }
+                    }
+                </div>
+                <div>
+                    <input type="number" class="w-75 m-2" #count min="1" [max]="prd.quantity">
+                    <button class="btn  btn-primary" (click)="buy(prd.price , count.value , prd , count)"
+                        [class.disabled]="prd.quantity==0">Buy</button>
+                </div>
+            </div>
+        </div>
+        }
+        @empty{
+        <h1>No data Found</h1>
+        }
+    </div>
+</div>
+<h1>{{x | date : 'long'}}</h1>

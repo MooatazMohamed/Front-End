@@ -1,0 +1,77 @@
+<!-- Template Driven -->
+
+<!-- @if(flag){
+<div class="alert alert-danger" role="alert">
+  Data Invalid
+</div>
+}
+<form #formData="ngForm" (ngSubmit)="submit(formData)">
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Email address</label>
+    <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+    ngModel 
+    required email 
+    #email="ngModel"
+    >
+    @if(email.invalid && email.touched){
+      @if(email.errors?.['required']){
+        <p class="text-danger">Email required</p>
+      }
+      @if(email.errors?.['email']){
+                <p class="text-danger">Email invalid</p>
+      }
+    }
+
+
+
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Password</label>
+    <input type="password" class="form-control" id="exampleInputPassword1"
+    name="password"
+    ngModel
+    required
+    minlength="8"
+    #password="ngModel"
+    >
+
+    @if(password.invalid && password.touched){
+      @if(password.errors?.['required']){
+            <p class="text-danger">password required</p>
+      }
+      @if(password.errors?.['minlength']){
+            <p class="text-danger">password minlength 8 charachter</p>
+
+      }
+    }
+  </div>
+  <div class="mb-3 form-check">
+    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form> -->
+
+
+<!-- Reactive Form -->
+
+<form [formGroup]="loginForm" (ngSubmit)="submit()">
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Email address</label>
+    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+    formControlName="email"
+    >
+    @if(loginForm.controls.email.invalid && loginForm.controls.email.touched){
+      @if(loginForm.controls.email.errors?.['required']){
+        <p class="text-danger">Email required</p>
+      }
+    }
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Password</label>
+    <input type="password" class="form-control" id="exampleInputPassword1"
+    formControlName="password"
+>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
