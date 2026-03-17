@@ -1,9 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterLink, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-about',
-  imports: [RouterOutlet],
+  imports: [RouterOutlet , RouterLink],
   templateUrl: './about.html',
   styleUrl: './about.css',
 })

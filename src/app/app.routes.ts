@@ -1,5 +1,4 @@
 import { Routes } from '@angular/router';
-import { Home } from './components/home/home';
 import { Cards } from './components/cards/cards';
 import { About } from './components/about/about';
 import { Products } from './components/products/products';
@@ -8,25 +7,25 @@ import { AboutPhone } from './components/about-phone/about-phone';
 import { AboutLap } from './components/about-lap/about-lap';
 import { Notfound } from './components/notfound/notfound';
 import { authGuard } from './guards/auth-guard-guard';
+import { Home } from './components/home/home';
 
 export const routes: Routes = [
 
     {
         path:"",
-        component:Login
-    },
-    {
-        path:"product",
         component:Products
     },
     {
-        path:"cards",
-         loadComponent: () => import('./components/cards/cards').then((m) => m.Cards),
-         canActivate:[authGuard]
+        path:"home",
+        component:Home
+    },
+    {
+        path:"cardsss",
+        component:Cards
     },
     {
         path:"about",
-        component:About,
+        loadComponent: () => import('./components/about/about').then((xyz) => xyz.About),
         children:[
             {
                 path:"phone",

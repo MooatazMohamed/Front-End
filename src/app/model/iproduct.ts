@@ -12,3 +12,11 @@ export interface ICaegory{
     name:string
 }
 
+
+export interface ProductAPI{
+    id:number;
+    name:string;
+    brand:string
+    price:number
+    size:string
+}

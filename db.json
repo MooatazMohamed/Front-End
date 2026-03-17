@@ -1,0 +1,45 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "T-Shirt",
+      "brand": "Nike",
+      "price": 120,
+      "size": "M"
+    },
+    {
+      "name": "Jeanss",
+      "brand": "Levi'ss",
+      "price": 255,
+      "size": "L",
+      "id": 2
+    },
+    {
+      "id": 3,
+      "name": "Jacket",
+      "brand": "Adidas",
+      "price": 400,
+      "size": "XL"
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "email": "moatazmohamed@gmail.com",
+      "password": "123456789",
+      "role": "user"
+    },
+    {
+      "id": 2,
+      "email": "ossamamohamed@gmail.com",
+      "password": "123456789",
+      "role": "admin"
+    }
+  ],
+  "role": [
+    {
+      "id": 1,
+      "name": "Admin"
+    }
+  ]
+}

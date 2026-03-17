@@ -1,7 +1,68 @@
-<section class="hero">
-  <div class="hero-content">
-    <h1>Welcome to Our Website</h1>
-    <p>Build modern apps using Angular</p>
-    <button>Get Started</button>
+<div class="container py-4">
+
+
+    <form [formGroup]="formData" (ngSubmit)="submit()">
+        <label for="">Name</label>
+        <input type="text" name="name" id="" formControlName="name">
+
+        <label for="">Brand</label>
+        <input type="text" name="brand" id="" formControlName="brand">
+        
+        <label for="">Price</label>
+        <input type="number" name="price" id="" formControlName="price">
+
+        <label for="">size</label>
+        <input type="text" name="size" id="" formControlName="size">
+
+        <button class="btn btn-primary">Add</button>
+    </form>
+
+  <div class="row mb-4">
+    <div class="col-12">
+      <div class="d-flex justify-content-between align-items-center bg-primary bg-gradient text-white p-3 rounded-3 shadow">
+        <div>
+          <h2 class="mb-0">
+            <i class="bi bi-box-seam me-2"></i>Our Products
+          </h2>
+          <p class="text-white-50 mb-0 mt-1">Discover our amazing collection</p>
+        </div>
+        <div>
+          <span class="badge bg-light text-primary p-3 rounded-pill">
+            <i class="bi bi-grid me-1"></i>
+            4 Products
+          </span>
+        </div>
+      </div>
+    </div>
   </div>
-</section>
+
+  <div class="row g-4">
+    @for(prd of product() ; track prd.id){
+    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
+      <div class="card h-100 border-0 shadow-sm">
+        <div class="bg-primary bg-gradient text-white p-4 text-center" style="height: 180px; border-radius: 8px 8px 0 0;">
+          <i class="bi bi-box-seam display-4"></i>
+          <h5 class="mt-2 mb-0">Nike</h5>
+        </div>
+        <div class="card-body">
+          <div class="d-flex justify-content-between align-items-start mb-3">
+            <div>
+              <h5 class="card-title fw-bold mb-1">{{prd.name}}</h5>
+              <span class="badge bg-secondary">Size: {{prd.size}}</span>
+            </div>
+            <span class="badge bg-success">{{prd.brand}}</span>
+          </div>
+          <div class="mb-3">
+            <span class="text-muted text-decoration-line-through me-2">EGP 144</span>
+            <span class="h4 text-primary fw-bold">EGP {{prd.price}}</span>
+          </div>
+          <div>
+            <button class="btn btn-danger" (click)="delete(prd.id)">Delete</button>
+          </div>
+        </div>
+      </div>
+    </div>
+}@empty{
+        <h1 class="text-danger">No data found</h1>
+    }
+</div>

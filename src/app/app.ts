@@ -8,7 +8,7 @@ import { About } from './components/about/about';
 
 @Component({
   selector: 'app-root',
-  imports: [Nav , Cards , Products , About , RouterOutlet],
+  imports: [Nav , RouterOutlet],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })

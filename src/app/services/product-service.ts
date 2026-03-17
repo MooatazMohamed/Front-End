@@ -1,28 +1,29 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { ProductAPI } from '../model/iproduct';
 
 
-export interface Product {
-  id?: number;
-  name: string;
-  brand: string;
-  price: number;
-  size: string;
-  image?:string
-}
 @Injectable({
   providedIn: 'root',
 })
+
+
 export class ProductService {
-  url = 'http://localhost:3000/products';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http:HttpClient){}
+  url = "http://localhost:3000/products"
 
-getProducts():Observable<Product[]>{
-  return this.http.get<Product[]>(this.url)
-}
-addProduct(product:Product):Observable<Product>{
-  return this.http.post<Product>(this.url,product)
-}
+  getAllProducts():Observable<ProductAPI[]>{
+    return this.http.get<ProductAPI[]>(this.url)
+  }
+
+  deleteProduct(id:number):Observable<void>{
+   return this.http.delete<void>(`${this.url}/${id}`)
+    /* http://localhost:3000/products/id */
+  }
+
+  addProduct(product:ProductAPI):Observable<ProductAPI>{
+    return this.http.post<ProductAPI>(this.url,product)
+  }
 }
